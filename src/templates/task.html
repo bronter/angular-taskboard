@@ -34,7 +34,11 @@
     ng-mousedown="$event.stopPropagation()"
   >
   </textarea>
-  <div class="delete-task" ng-click="deleteTask(c, $index)">
+  <div
+    class="delete-task"
+    ng-mousedown="$event.stopPropagation()"
+    ng-click="deleteTask(c, $index)"
+  >
     &#xF00D;
   </div>
 </div>

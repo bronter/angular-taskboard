@@ -37,9 +37,7 @@
     </div>
   </div>
   <div class="add-task" ng-click="addTask(c)">&#xF067 Add Task</div>
-  <div ng-repeat="t in c.tasks">
-    <task t="t" c="c"></task>
-  </div>
+  <tasks></tasks>
   <div class="left-overlay" ng-show="c.draggingOver === 'left'"></div>
   <div class="right-overlay" ng-show="c.draggingOver === 'right'"></div>
 </div>

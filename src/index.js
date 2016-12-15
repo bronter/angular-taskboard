@@ -6,11 +6,13 @@ import "../styles/global.scss";
 import HomeController from "./controllers/home.js";
 import ColumnsController from "./controllers/columns.js";
 import ColumnController from "./controllers/column.js";
+import TasksController from "./controllers/tasks.js";
 import TaskController from "./controllers/task.js";
 
 import Home from "./templates/home.html";
 import Columns from "./templates/columns.html";
 import Column from "./templates/column.html";
+import Tasks from "./templates/tasks.html";
 import Task from "./templates/task.html";
 
 const testModule = angular.module('taskboard', ["ngRoute"]);
@@ -33,6 +35,12 @@ testModule.directive('column', () => {
       columns: "=",
       columnsLocked: "<",
     },
+  };
+});
+testModule.directive('tasks', () => {
+  return {
+    template: Tasks,
+    controller: TasksController,
   };
 });
 testModule.directive('task', () => {
