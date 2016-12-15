@@ -1,7 +1,6 @@
 @import "./task.scss";
 
 .column-header, .column-prompt {
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +11,7 @@
 }
 
 .column-header {
+  height: 32px;
   position: relative;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
