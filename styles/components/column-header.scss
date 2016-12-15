@@ -18,6 +18,11 @@
   box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.05);
   padding-right: 4px;
   background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  &.locked {
+    cursor: auto;
+  }
 }
 
 .column-name-input {
