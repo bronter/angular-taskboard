@@ -2,10 +2,21 @@ export default class ColumnController {
   constructor($scope) {
     this.scope = $scope;
 
+    $scope.addTask = this.addTask.bind(this);
+
     $scope.startDragging = this.startDragging.bind(this);
     $scope.stopDragging = this.stopDragging.bind(this);
     $scope.handleDrag = this.handleDrag.bind(this);
     $scope.dragTarget = this.dragTarget.bind(this);
+  }
+
+  addTask(c) {
+    c.tasks.unshift({
+      title: "",
+      description: "",
+      editingName: true,
+      editingDescription: true,
+    });
   }
 
   startDragging(event, c) {
@@ -26,7 +37,6 @@ export default class ColumnController {
     if (!c.isDragging) return true;
     c.x = event.clientX;
     c.y = event.clientY;
-    console.log("That's really gay " + window.scrollX + " " + window.scrollY);
   }
 
   stopDragging(event, columns, c) {

@@ -9,8 +9,6 @@ export default class ColumnsController {
     $scope.columnKeypress = this.columnKeypress.bind(this);
     $scope.toggleLock = this.toggleLock.bind(this);
     $scope.deleteColumn = this.deleteColumn.bind(this);
-
-    $scope.addTask = this.addTask.bind(this);
   }
 
   addColumn() {
@@ -45,14 +43,5 @@ export default class ColumnsController {
 
   deleteColumn(index) {
     this.scope.columns.splice(index, 1);
-  }
-
-  addTask(c) {
-    c.tasks.unshift({
-      title: "",
-      description: "",
-      editingName: true,
-      editingDescription: true,
-    });
   }
 };
