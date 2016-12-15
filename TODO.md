@@ -1,6 +1,5 @@
 TODO:
 -----
-* Re-arrange tasks within column
 * Move tasks to other columns
 * Local persistent sessions (localStorage probably)
 

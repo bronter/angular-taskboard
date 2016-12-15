@@ -24,6 +24,7 @@ testModule.config(($routeProvider) => {
 });
 testModule.controller('home', HomeController);
 testModule.controller('taskColumn', ColumnsController);
+testModule.controller('tasks', TasksController);
 
 testModule.component('columns', {template: Columns});
 testModule.directive('column', () => {
@@ -40,7 +41,6 @@ testModule.directive('column', () => {
 testModule.directive('tasks', () => {
   return {
     template: Tasks,
-    controller: TasksController,
   };
 });
 testModule.directive('task', () => {
