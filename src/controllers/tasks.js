@@ -44,6 +44,8 @@ export default class TasksController {
     const boundedX = Math.min(Math.max(x - cRekt.left, 0), container.scrollWidth - 1);
     const insertAt = Math.round((boundedX / container.scrollWidth) * (columns.length + 1));
 
+    console.log(insertAt);
+
     return insertAt;
   }
 
