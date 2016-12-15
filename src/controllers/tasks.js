@@ -1,3 +1,5 @@
+import {spacialListSearch} from "../utils.js";
+
 export default class TasksController {
   constructor($scope, $element) {
     this.scope = $scope;
@@ -37,41 +39,13 @@ export default class TasksController {
     const index = columns.indexOf(this.scope.c);
     // Something seriously went wrong if we trigger this
     if (index < 0) return false;
+
     const x = event.clientX;
     const container = this.scope.columnsContainer[0];
-    // #shrekt
-    const cRekt = container.getBoundingClientRect();
-    const boundedX = Math.min(Math.max(x - cRekt.left, 0), container.scrollWidth - 1);
-    const insertAt = Math.round((boundedX / container.scrollWidth) * (columns.length + 1));
-
-    console.log(insertAt);
+    const nodes = container.getElementsByClassName("column");
+    return spacialListSearch(x, nodes, "horizontal");
 
     return insertAt;
-  }
-
-  findTaskIndex(y, taskNodes) {
-    const length = taskNodes.length;
-    let first = 0;
-    let last = length - 1;
-    let found = false;
-    let index;
-
-    while (first <= last && !found) {
-      index = Math.floor((first + last) / 2);
-
-      let rekt = taskNodes[index].getBoundingClientRect();
-      if (y >= rekt.top) {
-        if (y <= rekt.bottom) {
-          found = true;
-        } else {
-          first = index + 1;
-        }
-      } else {
-        last = index - 1;
-      }
-    }
-
-    return index;
   }
 
   stopDragging(event, t) {
@@ -86,7 +60,7 @@ export default class TasksController {
     const xIndex = this.getColumnIndex(event);
 
     const columnNodes = container.getElementsByClassName('task');
-    const insertAt = this.findTaskIndex(y, columnNodes);
+    const insertAt = spacialListSearch(y, columnNodes);
 
     tasks.splice(index, 1);
     this.scope.columns[xIndex].tasks.splice(insertAt, 0, Object(t));

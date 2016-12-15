@@ -1,3 +1,5 @@
+import {spacialListSearch} from "../utils.js";
+
 export default class ColumnController {
   constructor($scope) {
     this.scope = $scope;
@@ -77,10 +79,10 @@ export default class ColumnController {
     if (index < 0) return false;
     const x = event.clientX;
     const container = this.scope.columnsContainer[0];
-    // #shrekt
-    const cRekt = container.getBoundingClientRect();
-    const boundedX = Math.min(Math.max(x - cRekt.left, 0), container.scrollWidth - 1);
-    const insertAt = Math.round((boundedX / container.scrollWidth) * (columns.length + 1));
+
+    const nodes = container.getElementsByClassName("column");
+    const insertAt = spacialListSearch(x, nodes, "horizontal");
+
     columns.splice(index, 1);
     columns.splice(insertAt, 0, Object(c));
 
