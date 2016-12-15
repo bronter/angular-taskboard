@@ -1,6 +1,5 @@
 TODO:
 -----
-* Move tasks to other columns
 * Local persistent sessions (localStorage probably)
 
 Roadmap:

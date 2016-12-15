@@ -47,21 +47,47 @@ export default class TasksController {
     return insertAt;
   }
 
+  findTaskIndex(y, taskNodes) {
+    const length = taskNodes.length;
+    let first = 0;
+    let last = length - 1;
+    let found = false;
+    let index;
+
+    while (first <= last && !found) {
+      index = Math.floor((first + last) / 2);
+
+      let rekt = taskNodes[index].getBoundingClientRect();
+      if (y >= rekt.top) {
+        if (y <= rekt.bottom) {
+          found = true;
+        } else {
+          first = index + 1;
+        }
+      } else {
+        last = index - 1;
+      }
+    }
+
+    return index;
+  }
+
   stopDragging(event, t) {
     const tasks = this.scope.c.tasks;
     const index = tasks.indexOf(t);
+
     // Something seriously went wrong if we trigger this
     if (index < 0) return false;
+
     const y = event.clientY;
     const container = this.container[0];
-    // #shrekt
-    const tRekt = container.getBoundingClientRect();
-    const boundedY = Math.min(Math.max(y - tRekt.top, 0), container.scrollHeight - 1);
-    // We're going to remove the element from the array, so subtract an additional index
-    // i.e. tasks.length - 2
-    const insertAt = Math.round((boundedY / container.scrollHeight) * (tasks.length - 1));
+    const xIndex = this.getColumnIndex(event);
+
+    const columnNodes = container.getElementsByClassName('task');
+    const insertAt = this.findTaskIndex(y, columnNodes);
+
     tasks.splice(index, 1);
-    tasks.splice(insertAt, 0, Object(t));
+    this.scope.columns[xIndex].tasks.splice(insertAt, 0, Object(t));
 
     // Clean up
     t.isDragging = false;
