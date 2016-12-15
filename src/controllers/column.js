@@ -71,7 +71,6 @@ export default class ColumnController {
 
   dragTarget(event, c) {
     if (c.isDragging) return true;
-    console.log("bam!");
     const t = event.target;
     const rekt = t.getBoundingClientRect();
     const x = event.clientX - rekt.left;

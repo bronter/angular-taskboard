@@ -1,8 +1,13 @@
 export default class TaskController {
-  constructor($scope) {
+  constructor($scope, $element) {
+    this.element = $element;
     $scope.handleKeypressForName = this.handleKeypressForName.bind(this);
     $scope.handleKeypressForDescription = this.handleKeypressForDescription.bind(this);
     $scope.deleteTask = this.deleteTask.bind(this);
+
+    $scope.startDragging = this.startDragging.bind(this);
+    $scope.handleDrag = this.handleDrag.bind(this);
+    $scope.stopDragging = this.stopDragging.bind(this);
   }
 
   handleKeypressForName(event, t) {
@@ -44,7 +49,7 @@ export default class TaskController {
     // Something seriously went wrong if we trigger this
     if (index < 0) return false;
     const x = event.clientX;
-    const container = t.container[0];
+    const container = this.element[0];
     // #shrekt
     const tRekt = container.getBoundingClientRect();
     const boundedX = Math.min(Math.max(x - tRekt.left, 0), container.scrollWidth - 1);
@@ -52,7 +57,7 @@ export default class TaskController {
     // i.e. tasks.length - 2
     const insertAt = Math.round((boundedX / container.scrollWidth) * tasks.length);
     tasks.splice(index, 1);
-    tasks.splice(insertAt, 0, Object(c));
+    tasks.splice(insertAt, 0, Object(t));
 
     // Clean up
     t.isDragging = false;

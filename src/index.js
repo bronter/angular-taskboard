@@ -40,7 +40,7 @@ testModule.directive('task', () => {
     template: Task,
     controller: TaskController,
     bindings: {
-      t: "=",
+      // t: "=",
       c: "=",
     },
   };

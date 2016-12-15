@@ -1,10 +1,11 @@
 <div
   ng-class="['task', {dragging: t.isDragging}]"
   ng-mousedown="startDragging($event, t)"
+  ng-style="{top: t.y - t.startY + t.offsetY, left: t.x - t.startX + t.offsetX}"
 >
   <div
     class="drag-overlay"
-    ng-show="false && t.isDragging"
+    ng-show="t.isDragging"
     ng-mousemove="handleDrag($event, t)"
     ng-mouseup="stopDragging($event, c.tasks, t)"
     ng-mouseleave="stopDragging($event, c.tasks, t)"
@@ -19,6 +20,7 @@
     ng-model="t.name"
     ng-show="t.editingName"
     ng-keypress="handleKeypressForName($event, t)"
+    ng-mousedown="$event.stopPropagation()"
   />
   <div class="task-description" ng-hide="t.editingDescription">
     {{ t.description }}
@@ -29,6 +31,7 @@
     ng-model="t.description"
     ng-show="t.editingDescription"
     ng-keypress="handleKeypressForDescription($event, t)"
+    ng-mousedown="$event.stopPropagation()"
   >
   </textarea>
   <div class="delete-task" ng-click="deleteTask(c, $index)">
