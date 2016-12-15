@@ -6,6 +6,15 @@
   height: 100px;
   position: relative;
 
+  &.dragging {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  &.dragging ~ .task {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
   .name-input, .description-input {
     margin-left: 6px;
     margin-right: 6px;

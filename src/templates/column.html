@@ -5,21 +5,23 @@
   <div
     class="drag-overlay"
     ng-show="c.isDragging"
-    ng-mousemove="handleDrag($event, c)"
-    ng-mouseup="stopDragging($event, columns, c)"
-    ng-mouseleave="stopDragging($event, columns, c)"
+    ng-mousemove="handleDrag($event)"
+    ng-mouseup="stopDragging($event)"
+    ng-mouseleave="stopDragging($event)"
   >
   </div>
   <div
     ng-class="['column-header', {locked: c.locked}]"
-    ng-mousedown="startDragging($event, c)"
+    ng-mousedown="startDragging($event)"
   >
-    <div class="column-name" ng-show="c.locked">{{ c.name }}</div>
+    <div class="column-name" ng-show="c.locked || columnsLocked">
+      {{ c.name }}
+    </div>
     <input
       class="column-name-input"
       type="text"
       ng-hide="c.locked || columnsLocked"
-      ng-keypress="columnKeypress($event, c)"
+      ng-keypress="columnKeypress($event)"
       ng-model="c.name"
       placeholder="Column Name"
       ng-mousedown="$event.stopPropagation()"
@@ -30,14 +32,14 @@
       ng-mousedown="$event.stopPropagation()"
       ng-hide="columnsLocked"
     >
-      <span ng-click="toggleLock($index)">
+      <span ng-click="toggleLock()">
         {{ c.locked ? '\uf09c' : '\uf023' }}
       </span>
-      <span ng-click="deleteColumn($index)" ng-hide="c.locked">&#xF00D;</span>
+      <span ng-click="deleteColumn()" ng-hide="c.locked">&#xF00D;</span>
     </div>
   </div>
-  <div class="add-task" ng-click="addTask(c)">&#xF067 Add Task</div>
-  <tasks></tasks>
+  <div class="add-task" ng-click="addTask()">&#xF067 Add Task</div>
+  <tasks />
   <div class="left-overlay" ng-show="c.draggingOver === 'left'"></div>
   <div class="right-overlay" ng-show="c.draggingOver === 'right'"></div>
 </div>

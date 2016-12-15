@@ -32,7 +32,23 @@ export default class TasksController {
     t.y = event.clientY;
   }
 
-  stopDragging(event, tasks, t) {
+  getColumnIndex(event) {
+    const columns = this.scope.columns;
+    const index = columns.indexOf(this.scope.c);
+    // Something seriously went wrong if we trigger this
+    if (index < 0) return false;
+    const x = event.clientX;
+    const container = this.scope.columnsContainer[0];
+    // #shrekt
+    const cRekt = container.getBoundingClientRect();
+    const boundedX = Math.min(Math.max(x - cRekt.left, 0), container.scrollWidth - 1);
+    const insertAt = Math.round((boundedX / container.scrollWidth) * (columns.length + 1));
+
+    return insertAt;
+  }
+
+  stopDragging(event, t) {
+    const tasks = this.scope.c.tasks;
     const index = tasks.indexOf(t);
     // Something seriously went wrong if we trigger this
     if (index < 0) return false;

@@ -1,18 +1,19 @@
 export default class TaskController {
   constructor($scope) {
+    this.scope = $scope;
     $scope.handleKeypressForName = this.handleKeypressForName.bind(this);
     $scope.handleKeypressForDescription = this.handleKeypressForDescription.bind(this);
   }
 
-  handleKeypressForName(event, t) {
+  handleKeypressForName(event) {
     if (event.keyCode === 13) {
-      t.editingName = false;
+      this.scope.t.editingName = false;
     }
   }
 
-  handleKeypressForDescription(event, t) {
+  handleKeypressForDescription(event) {
     if (event.keyCode === 13) {
-      t.editingDescription = false;
+      this.scope.t.editingDescription = false;
     }
   }
 };

@@ -25,17 +25,13 @@ testModule.config(($routeProvider) => {
 testModule.controller('home', HomeController);
 testModule.controller('taskColumn', ColumnsController);
 testModule.controller('tasks', TasksController);
+testModule.controller('task', TaskController);
 
 testModule.component('columns', {template: Columns});
 testModule.directive('column', () => {
   return {
     template: Column,
     controller: ColumnController,
-    bindings: {
-      c: "=",
-      columns: "=",
-      columnsLocked: "<",
-    },
   };
 });
 testModule.directive('tasks', () => {
@@ -46,10 +42,5 @@ testModule.directive('tasks', () => {
 testModule.directive('task', () => {
   return {
     template: Task,
-    controller: TaskController,
-    bindings: {
-      // t: "=",
-      c: "=",
-    },
   };
 });
