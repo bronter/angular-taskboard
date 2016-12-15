@@ -1,6 +1,6 @@
 <div class="columns" ng-controller="taskColumn">
   <div class="column-add">
-    <div class="add" ng-click="addColumn()" ng-show="!columnsLocked">&#xF067;</div>
+    <div class="add" ng-click="addColumn()" ng-hide="columnsLocked">&#xF067;</div>
     <div class="lock" ng-click="columnsLocked = !columnsLocked">
       {{columnsLocked ? '\uf09c' : '\uf023'}}
     </div>

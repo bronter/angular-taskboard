@@ -1,5 +1,5 @@
 <div class="task">
-  <div class="task-name" ng-show="!t.editingName">
+  <div class="task-name" ng-hide="t.editingName">
     {{ t.name }}
   </div>
   <input
@@ -9,7 +9,7 @@
     ng-show="t.editingName"
     ng-keypress="handleKeypressForName($event, t)"
   />
-  <div class="task-description" ng-show="!t.editingDescription">
+  <div class="task-description" ng-hide="t.editingDescription">
     {{ t.description }}
   </div>
   <textarea

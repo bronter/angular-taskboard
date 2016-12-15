@@ -18,7 +18,7 @@
     <input
       class="column-name-input"
       type="text"
-      ng-show="!c.locked && ! columnsLocked"
+      ng-hide="c.locked || columnsLocked"
       ng-keypress="columnKeypress($event, c)"
       ng-model="c.name"
       placeholder="Column Name"
@@ -28,12 +28,12 @@
     <div
       class="buttons"
       ng-mousedown="$event.stopPropagation()"
-      ng-show="!columnsLocked"
+      ng-hide="columnsLocked"
     >
       <span ng-click="toggleLock($index)">
         {{ c.locked ? '\uf09c' : '\uf023' }}
       </span>
-      <span ng-click="deleteColumn($index)" ng-show="!c.locked">&#xF00D;</span>
+      <span ng-click="deleteColumn($index)" ng-hide="c.locked">&#xF00D;</span>
     </div>
   </div>
   <div class="add-task" ng-click="addTask(c)">&#xF067 Add Task</div>
