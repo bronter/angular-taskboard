@@ -14,7 +14,7 @@
     ng-class="['column-header', {locked: c.locked}]"
     ng-mousedown="startDragging($event, c)"
   >
-    <div ng-show="c.locked">{{ c.name }}</div>
+    <div class="column-name" ng-show="c.locked">{{ c.name }}</div>
     <input
       class="column-name-input"
       type="text"

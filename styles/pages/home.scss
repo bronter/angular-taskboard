@@ -2,8 +2,10 @@
 
 .home {
   background-color: #ccccff;
-  width: 100%;
+  // width: 100%;
+  min-width: 100vw;
   min-height: 100vw;
+  // max-width: 100%;
   position: absolute;
   top: 0;
   left: 0;

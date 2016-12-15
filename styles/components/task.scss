@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 80px;
+  height: 100px;
 
   .name-input, .description-input {
     margin-left: 6px;
@@ -27,5 +27,36 @@
     max-width: 90%;
     padding-top: 6px;
     resize: none;
+  }
+
+  .task-name, .task-description {
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+
+  .task-name {
+    margin-top: 6px;
+
+    height: 26px;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 40px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    & ~ .description-input {
+      margin-top: 6px;
+    }
+  }
+
+  .task-description {
+    font-size: 16px;
+    max-height: 100%;
+    overflow-y: auto;
+    word-wrap: break-word;
   }
 }
