@@ -18,5 +18,9 @@
     ng-model="t.description"
     ng-show="t.editingDescription"
     ng-keypress="handleKeypressForDescription($event, t)"
-  />
+  >
+  </textarea>
+  <div class="delete-task" ng-click="deleteTask(c, $index)">
+    &#xF00D;
+  </div>
 </div>
