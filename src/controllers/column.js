@@ -16,6 +16,13 @@ export default class ColumnController {
       description: "",
       editingName: true,
       editingDescription: true,
+      isDragging: false,
+      startX: 0,
+      startY: 0,
+      offsetX: 0,
+      offsetY: 0,
+      x: 0,
+      y: 0,
     });
   }
 
@@ -48,9 +55,7 @@ export default class ColumnController {
     // #shrekt
     const cRekt = container.getBoundingClientRect();
     const boundedX = Math.min(Math.max(x - cRekt.left, 0), container.scrollWidth - 1);
-    // We're going to remove the element from the array, so subtract an additional index
-    // i.e. columns.length - 2
-    const insertAt = Math.round((boundedX / container.scrollWidth) * columns.length);
+    const insertAt = Math.round((boundedX / container.scrollWidth) * (columns.length + 1));
     columns.splice(index, 1);
     columns.splice(insertAt, 0, Object(c));
 

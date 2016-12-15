@@ -1,4 +1,15 @@
-<div class="task">
+<div
+  ng-class="['task', {dragging: t.isDragging}]"
+  ng-mousedown="startDragging($event, t)"
+>
+  <div
+    class="drag-overlay"
+    ng-show="false && t.isDragging"
+    ng-mousemove="handleDrag($event, t)"
+    ng-mouseup="stopDragging($event, c.tasks, t)"
+    ng-mouseleave="stopDragging($event, c.tasks, t)"
+  >
+  </div>
   <div class="task-name" ng-hide="t.editingName">
     {{ t.name }}
   </div>
