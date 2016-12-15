@@ -1,0 +1,22 @@
+<div class="task">
+  <div class="task-name" ng-show="!t.editingName">
+    {{ t.name }}
+  </div>
+  <input
+    class="name-input"
+    placeholder="Task Name"
+    ng-model="t.name"
+    ng-show="t.editingName"
+    ng-keypress="handleKeypressForName($event, t)"
+  />
+  <div class="task-description" ng-show="!t.editingDescription">
+    {{ t.description }}
+  </div>
+  <textarea
+    class="description-input"
+    placeholder="Task Description"
+    ng-model="t.description"
+    ng-show="t.editingDescription"
+    ng-keypress="handleKeypressForDescription($event, t)"
+  />
+</div>

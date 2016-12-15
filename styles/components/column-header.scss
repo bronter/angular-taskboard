@@ -1,0 +1,97 @@
+@import "./task.scss";
+
+.column-header, .column-prompt {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.column-header {
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.05);
+  padding-right: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.column-name-input {
+  width: 100px;
+  height: 24px;
+  border: 0px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    inset 0 0 2px  rgba(0,0,0,0.1),
+          0 0 4px rgba(0,0,0,0.1);
+}
+
+.buttons {
+  position: absolute;
+  top: 0;
+  right: 6px;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: FontAwesome;
+  font-size: 16px;
+
+  span {
+    cursor: pointer;
+    &:hover {
+      color: #dd0000;
+    }
+    &:not(:last-of-type) {
+      margin-right: 2px;
+    }
+  }
+}
+
+.left-overlay, .right-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  background-color: black;
+}
+
+.left-overlay {
+  left: 0;
+}
+
+.right-overlay {
+  right: 0;
+}
+
+.add-task {
+  height: 28px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px -2px 2px 0px rgba(0, 0, 0, 0.06);
+
+  font-family: FontAwesome;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+}

@@ -1,0 +1,45 @@
+<div
+  ng-class="['column', {dragging: c.isDragging}]"
+  ng-style="{top: c.y - c.startY + c.offsetY, left: c.x - c.startX + c.offsetX}"
+>
+  <div
+    class="drag-overlay"
+    ng-show="c.isDragging"
+    ng-mousemove="handleDrag($event, c)"
+    ng-mouseup="stopDragging($event, columns, c)"
+    ng-mouseleave="stopDragging($event, columns, c)"
+  >
+  </div>
+  <div
+    class="column-header"
+    ng-mousedown="startDragging($event, c)"
+  >
+    <div ng-show="c.locked">{{ c.name }}</div>
+    <input
+      class="column-name-input"
+      type="text"
+      ng-show="!c.locked && ! columnsLocked"
+      ng-keypress="columnKeypress($event, c)"
+      ng-model="c.name"
+      placeholder="Column Name"
+      ng-mousedown="$event.stopPropagation()"
+      ng-mouseup="$event.stopPropagation()"
+    />
+    <div
+      class="buttons"
+      ng-mousedown="$event.stopPropagation()"
+      ng-show="!columnsLocked"
+    >
+      <span ng-click="toggleLock($index)">
+        {{ c.locked ? '\uf09c' : '\uf023' }}
+      </span>
+      <span ng-click="deleteColumn($index)" ng-show="!c.locked">&#xF00D;</span>
+    </div>
+  </div>
+  <div class="add-task" ng-click="addTask(c)">&#xF067 Add Task</div>
+  <div ng-repeat="t in c.tasks">
+    <task t="t" c="c"></task>
+  </div>
+  <div class="left-overlay" ng-show="c.draggingOver === 'left'"></div>
+  <div class="right-overlay" ng-show="c.draggingOver === 'right'"></div>
+</div>

@@ -1,0 +1,15 @@
+<div class="columns" ng-controller="taskColumn">
+  <div class="column-add">
+    <div class="add" ng-click="addColumn()" ng-show="!columnsLocked">&#xF067;</div>
+    <div class="lock" ng-click="columnsLocked = !columnsLocked">
+      {{columnsLocked ? '\uf09c' : '\uf023'}}
+    </div>
+  </div>
+  <div class="column-prompt" ng-show="columns.length === 0">&#xF060; Add Column</div>
+  <div
+    ng-repeat="c in columns"
+    ng-class="['column-container', {dragging: c.isDragging}]"
+  >
+    <column columns="columns" c="c" columnsLocked="columnsLocked"></column>
+  </div>
+</div>
