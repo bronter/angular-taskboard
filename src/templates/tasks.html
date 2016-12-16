@@ -1,5 +1,5 @@
 <div class="tasks" ng-controller="tasks">
-  <div class="task-container" ng-repeat="t in c.tasks">
+  <div ng-repeat="t in c.tasks" ng-class="['task-container', {dragging: t.isDragging}]">
     <task />
   </div>
 </div>

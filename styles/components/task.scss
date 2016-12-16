@@ -1,3 +1,9 @@
+.task-container {
+  &.dragging + .task-container .task {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
+}
+
 .task {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
@@ -10,10 +16,6 @@
   &.dragging {
     border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.06);
-  }
-
-  &.dragging ~ .task {
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
   }
 
   .name-input, .description-input {
