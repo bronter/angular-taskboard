@@ -1,5 +1,9 @@
 TODO:
 -----
+* Refactor
+ * Move data mangling from controllers to services
+ * Fewer directives, more components
+ * Make sure we aren't passing unnecessary things to child scopes
 * Local persistent sessions (localStorage probably)
 
 Roadmap:
