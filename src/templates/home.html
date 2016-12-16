@@ -1,0 +1,19 @@
+<div class="home" ng-controller="home">
+  <h1 class="heading">AngularJS Taskboard</h1>
+  <div>
+    <div>Create New Board</div>
+    <div>
+      <span>Presets:</span>
+      <span ng-repeat="item in presets">
+        <input
+          type="radio"
+          ng-model="$parent.selectedPreset"
+          ng-value="item"
+        />
+        <label for="item.preset">
+          {{ item.preset }}
+        </label>
+      </span>
+    </div>
+  </div>
+</div>
