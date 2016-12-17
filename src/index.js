@@ -29,7 +29,7 @@ taskBoardModule.config(($routeProvider) => {
 });
 taskBoardModule.controller('home', HomeController);
 taskBoardModule.controller('board', BoardController);
-taskBoardModule.controller('taskColumn', ColumnsController);
+taskBoardModule.controller('columns', ColumnsController);
 taskBoardModule.controller('tasks', TasksController);
 taskBoardModule.controller('task', TaskController);
 

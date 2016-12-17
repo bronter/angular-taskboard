@@ -1,2 +1,4 @@
-export default function($scope) {
+export default class BoardController {
+  constructor($scope) {
+  }
 };
