@@ -11,7 +11,7 @@
   >
   </div>
   <div
-    ng-class="['column-header', {locked: c.locked}]"
+    ng-class="['column-header', {locked: c.locked || columnsLocked}]"
     ng-mousedown="startDragging($event)"
   >
     <div class="column-name" ng-show="c.locked || columnsLocked">
